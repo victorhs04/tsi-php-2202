@@ -35,11 +35,23 @@ $aluno = [  0 => [ 'matricula' => 634545,
 
 for( $i = 0 ; $i < count($aluno) ; $i++){
     echo "  <tr>
-            <td>{$aluno[$i]['matricula']}</td>
+                <td>{$aluno[$i]['matricula']}</td>
                 <td>{$aluno[$i]['nome']}</td>
                 <td>{$aluno[$i]['semestre']}</td>
             </tr>";        
 }
 
-echo '</table>';
 
+
+foreach( $aluno as $ind => $val){
+
+    echo " <tr>
+               <td>{$val ['matricula']}</td>
+               <td>{$val ['nome']}</td>
+               <td>{$val ['semestre']}</td>
+            </tr>";
+
+  
+}
+
+echo '</table';
