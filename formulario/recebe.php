@@ -1,18 +1,17 @@
 <?php
 
 
-echo "Seja bem-vindo(a), " . $_POST['nomeUsuario'] . '!<br><br>';
+echo "<br>Olá ". $_POST['nomeUsuario'];
 
-echo "Você tem {$_POST['idadeUsuario']}, CPF: {$_POST['cpfUsuario']}<br><br>";
+echo "<br>Você tem {$_POST['idadeUsuario']}anos, CPF:{$_POST['cpfUsuario']}<br>";
+echo "E o periodo escolhido foi o {$_POST['periodoUsuario']}";
 
-echo "E o período escolhido foi o {$_POST['periodoUsuario']}";
+$nome=$_POST['nomeUsuario'];
+$idade=$_POST['idadeUsuario'];
+$cpf=$_POST['cpfUsuario'];
+$periodo=$_POST['periodoUsuario'];
 
-$nome = $_POST['nomeUsuario'];
-$idade = $_POST['idadeUsuario'];
-$cpf = $_POST['cpfUsuario'];
-$periodo = $_POST['periodoUsuario'];
-
-$arquivo = fopen('alunos.csv', 'a'); //abro o arquivo para append
-fwrite($arquivo, "$nome, $idade, $cpf , $periodo\r\n");
+$arquivo=fopen('alunos.csv','a');//abro o arquivo para append
+fwrite($arquivo, "$nome;$idade;$cpf;$periodo\r\n");
 fclose($arquivo);
 ?>

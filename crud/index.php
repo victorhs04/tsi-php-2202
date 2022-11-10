@@ -1,15 +1,22 @@
 <?php
-require_once('../BancoDeDados/conecta.php');
+require_once '../bancoDeDados/conecta.php';
 
-$stmt = $bd->query('SELECT id, nome, turno, inicio FROM alunos');
+$STMT = $bd->query('SELECT ID, NOME, TURNO, INICIO FROM ALUNOS ');
 
+$alunos=[];
+// $saida = $STMT->fetch(PDO::FETCH_ASSOC);
+// var_dump($saida);
 
-$alunos = [];
+// while($saida = $STMT->fetch(PDO::FETCH_ASSOC)){
+//     var_dump($saida);
+//     echo '<br>';
+// };
 
-while($registro = $stmt->fetch(PDO::FETCH_ASSOC)){
+while($linha = $STMT->fetch()) {
+    $alunos[]=$linha;
 
-    $alunos[] = $registro;
-    
-};
+} 
 
 include 'view/listar.php';
+
+?>
