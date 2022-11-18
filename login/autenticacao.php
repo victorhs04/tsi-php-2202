@@ -12,17 +12,27 @@ $stmt = $bd->prepare("SELECT
                     WHERE
                         email = :email");
 
-$stmt_>bundParam(':email', $email);
+$stmt_>bindParam(':email', $email);
 
 $stmt->execute();
 
-$usuario = $stmt->fetch(PDO ::FETCH_ASSOC);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $autencicou = false;
 
-if(isset($usuario['nome'])){
+if(isset($usuario['nome'])){//Se existir o usuario
 
-    
+    //Comparar a senha para ver se está correta
+    if(password_verify($senha, $usuario['senha'])){
+
+        //Sessão incializada
+        session_start();
+        $_SESSION['id'] = $email;
+        //Direciona para o menu principal
+        header('Location: /tsi-php-2202/menu');
+
+        
+    }
 }
 
 include 'index.php';
